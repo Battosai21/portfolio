@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Sign up{% endblock %}
+{% block content %}
+<div class="container">
+    <h1 class="h3 mb-4 mt-5 fw-normal">Sign up</h1>
+    <form class="row g-3 needs-validation" id="signupForm" novalidate>
+        <div class="col-md-4">
+            <label for="firstName" class="form-label">First name</label>
+            <input type="text" class="form-control" id="firstName" placeholder="Otto" required>
+        </div>
+        <div class="col-md-4">
+            <label for="lastName" class="form-label">Last name</label>
+            <input type="text" class="form-control" id="lastName" placeholder="Von Bismarck" required>
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustomUsername" class="form-label">Username</label>
+            <div class="input-group has-validation">
+                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                <input type="text" class="form-control" id="username" aria-describedby="inputGroupPrepend" required>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <label for="firstPassword" class="form-label">Password</label>
+            <div class="input-group">
+                <button class="btn btn-outline-secondary" type="button" id="toggleFirstPassword" tabindex="-1">
+                    <i class="bi bi-eye"></i>
+                </button>
+                <input type="password" class="form-control" id="firstPassword" required>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <label for="confirmPassword" class="form-label">Confirm password</label>
+            <div class="input-group">
+                <button class="btn btn-outline-secondary" type="button" id="toggleConfirmPassword" tabindex="-1">
+                    <i class="bi bi-eye"></i>
+                </button>
+                <input type="password" class="form-control" id="confirmPassword" required>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" required>
+        </div>
+        <div class="col-md-3">
+            <label for="validationCustom04" class="form-label">Country</label>
+            <select class="form-select" id="countrySelect" required>
+                <option selected disabled value="">Choose...</option>
+                <option>Japan</option>
+                <option>Argentina</option>
+                <option>Spain</option>
+            </select>
+        </div>
+
+        <div class="col-12">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="termsCheck" required>
+                <label class="form-check-label" for="termsCheck">
+                    Agree to terms and conditions
+                </label>
+            </div>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

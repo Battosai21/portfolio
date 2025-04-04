@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>Bienvenidos a mi p&aacute;gina personal</h1>
+        <h3>Objetivos del sitio</h3>
+        <p>
+            El siguiente sitio web tiene al menos tres objetivos principales:
+            <ul>
+                <li>Contar mis historias y mis experiencias a fin de establecer un legado que perdure en las generaciones venideras de mi familia.</li>
+                <li>Publicar noticias relativas a mi persona así como aquellas relativas a mi familia.</li>
+                <li>Congregar en un solo sitio (virtual) a aquellos miembros de mi familia esparcidos por el mundo.</li>
+            </ul>
+            Además, cuenta con otros objetivos secundarios, tales como:
+            <ul>
+                <li>Mejorar mis habilidades informáticas.</li>
+                <li>Dar a conocer mi persona a aquellos interesados en contratar mis servicios.</li>
+            </ul>
+            En la sección <a href="">Historia</a>, se encontrará con mis memorias. Además, puede encontrar noticias actuales en la sección <a href="">Blog</a> de este sitio.
+            <br>Desde ya, le agradezco su visita. Espero que se sienta a gusto en esta página web y pueda encontrar aquellos recursos que le sean útiles.
+            <br><br>Sin más que agregar, lo saludo atentamente:<br>
+            <p class="text-end fst-italic">Manuel Escarr&aacute; Ghiglione</p>
+        </p>
+    </div>
+    <!--
+    <ul>
+        {% for project in projects %}
+            <li>
+                <a href="{% url 'project_detail' project.id %}">{{ project.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    -->
+{% endblock %}
