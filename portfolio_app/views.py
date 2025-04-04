@@ -3,6 +3,7 @@ from django.contrib.auth import logout
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
+from .models import UserProfile
 
 # Create your views here.
 def home(request):
@@ -38,9 +39,12 @@ def signup(request):
         user.save()
 
         # Update the UserProfile instance
-        user.userprofile.date_of_birth = date_of_birth
-        user.userprofile.location = location
-        user.userprofile.save()
+        user_profile = UserProfile.objects.create(
+            user=user,
+            date_of_birth=date_of_birth,
+            location=location
+        )
+        user_profile.save()
 
         # Log the user in and redirect
         login(request, user)
