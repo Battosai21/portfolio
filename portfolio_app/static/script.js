@@ -170,7 +170,7 @@ countrySelect.addEventListener('blur', (event) => {
 });
 
 const termsCheck = document.getElementById('termsCheck');
-termsCheck.addEventListener('blur', (event) => {
+termsCheck.addEventListener('click', (event) => {
   if (!termsCheck.checked) {
     termsCheck.classList.add('is-invalid');
     removeInvalidFeedback('termsCheck');
@@ -202,7 +202,6 @@ termsCheck.addEventListener('blur', (event) => {
       'confirmPassword',
       'email',
       'countrySelect',
-      'termsCheck',
     ];
 
     fieldsToValidate.forEach((fieldId) => {

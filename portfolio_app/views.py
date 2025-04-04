@@ -1,24 +1,15 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Project     #Import the project model
+from django.shortcuts import render, redirect
 from django.contrib.auth import logout
 from django.http import JsonResponse
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 # Create your views here.
 def home(request):
-    projects = Project.objects.all()
-    return render(request, 'home.html', {'projects': projects})
+    return render(request, 'home.html')
 
 def blog(request):
     return render(request, 'blog.html')
-
-def projects(request):
-    projects = Project.objects.all()
-    return render(request, 'projects.html', {'projects': projects})
-
-def project_detail(request, project_id):
-    project = get_object_or_404(Project, id=project_id)
-    return render(request, 'project_detail.html', {'project': project})
 
 def historia(request):
     return render(request, 'historia.html')
@@ -27,6 +18,34 @@ def login(request):
     return render(request, 'registration/login.html')
 
 def signup(request):
+    if request.method == 'POST':
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        email = request.POST.get('email')
+        date_of_birth = request.POST.get('date_of_birth')
+        location = request.POST.get('location')
+
+        # Create the user
+        user = User.objects.create_user(
+            first_name=first_name,
+            last_name=last_name,
+            username=username,
+            password=password,
+            email=email
+        )
+        user.save()
+
+        # Update the UserProfile instance
+        user.userprofile.date_of_birth = date_of_birth
+        user.userprofile.location = location
+        user.userprofile.save()
+
+        # Log the user in and redirect
+        login(request, user)
+        messages.success(request, 'Your account has been created successfully!')
+        return redirect('home')
     return render(request, 'registration/signup.html')
 
 def logout_user(request):
