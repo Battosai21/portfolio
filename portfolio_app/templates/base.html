@@ -19,6 +19,8 @@
       />
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
       <link rel="stylesheet" href="{% static 'styles.css' %}">
+    </head>
+    
     <body>
         <header>
             <!-- place navbar here -->
@@ -54,7 +56,7 @@
                         <ul class="dropdown-menu">
                           <li><a class="dropdown-item" href="">Account settings</a></li>
                           {% if user.is_superuser %}
-                          <li><a class="dropdown-item" href="admin/">Admin site</a></li>
+                          <li><a class="dropdown-item mt-2" href="admin/">Admin site</a></li>
                           {% endif %}
                           <li>
                             <hr class="dropdown-divider">
@@ -89,6 +91,15 @@
             </nav>
         </header>
         <main>
+          {% if messages %}
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Well done!</h4>
+                {% for message in messages %}
+                    <hr>
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+          {% endif %}
           {% block content %}{% endblock %}
         </main>
 
