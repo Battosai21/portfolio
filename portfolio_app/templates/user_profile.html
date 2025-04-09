@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}User Profile{% endblock %}
+{% load static %}
+
+{% block content %}
+<div class="container rounded bg-white mt-2 mb-5">
+    <div class="row">
+        <div class="col-md-3 me-auto">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                <img class="rounded-circle" width="150px" height="150px" src="{% if user.userprofile.profile_picture %}{{ user.userprofile.profile_picture.url }}{% else %}{% static 'img/alex_tg.jpg' %}{% endif %}" alt="Profile Picture">
+                <span class="font-weight-bold mt-2">{{user.userprofile.user}}</span>
+                <span class="text-black-50 mt-2">{{user.email}}</span>
+                <span class="text-black-50 mt-2">Account status: 
+                    {% if user.userprofile.is_verified %}
+                        Active
+                    {% else %}
+                        Inactive
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profile Settings</h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6"><label>Name</label><input type="text" class="form-control" value="{{user.first_name}}" readonly></div>
+                    <div class="col-md-6"><label>Surname</label><input type="text" class="form-control" value="{{user.last_name}}" readonly></div>
+                    <div class="col-md-6"><label>Phone number</label><input type="text" class="form-control" value="" id="phone"></div>
+                </div>
+                <div class="row mt-3" id="address">
+                    <div class="col-md-12"><label>Address Line 1</label><input type="text" class="form-control" placeholder="Enter your address here" value=""></div>
+                    <div class="col-md-12"><label>Address Line 2</label><input type="text" class="form-control" placeholder="Continue entering your address here" value=""></div>
+                    <div class="col-md-6"><label>Country</label>
+                        <select class="form-select" name="location" id="countrySelect">
+                            <option selected disabled value="">Choose...</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6"><label>Zip Code</label><input type="text" class="form-control" placeholder="Enter a Zip code" value=""></div>
+                    <div class="col-md-6"><label>Province / State</label><input type="text" class="form-control" placeholder="Select your province" value=""></div>
+                    <div class="col-md-6"><label>City</label><input type="text" class="form-control" placeholder="Enter your city" value=""></div>
+                </div>
+                <div class="row mt-3" id="misc">
+                    <div class="col-md-12"><label>Profession</label><input type="text" class="form-control" placeholder="Enter your profession (not required)" value=""></div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
+    </div>
+</div>
+{% endblock %}

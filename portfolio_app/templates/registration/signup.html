@@ -51,9 +51,6 @@
             <label for="countrySelect" class="form-label">Country</label>
             <select class="form-select" name="location" id="countrySelect" required>
                 <option selected disabled value="">Choose...</option>
-                <option>Japan</option>
-                <option>Argentina</option>
-                <option>Spain</option>
             </select>
         </div>
         <div class="col-12">
@@ -73,5 +70,6 @@
     <h2>Already have an account?</h2>
     <p>Log in <a href="{% url 'login' %}">here</a></p>
 </div>
-<script src="{% static 'signup.js' %}"></script>
 {% endblock %}
+
+{% block extra_js %}<script src="{% static 'signup.js' %}"></script>{% endblock %}

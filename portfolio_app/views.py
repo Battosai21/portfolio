@@ -3,7 +3,7 @@ from django.contrib.auth import logout, login, authenticate
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
-#from .models import UserProfile
+from .models import UserProfile
 #from django.core.signing import BadSignature
 #from .emailTokenGenerator import signer, send_verification_email
 
@@ -16,6 +16,15 @@ def blog(request):
 
 def historia(request):
     return render(request, 'historia.html')
+
+def user_profile(request):
+    if request.user.is_authenticated:
+        user = request.user
+        user_profile = UserProfile.objects.get(user=user)
+        return render(request, 'user_profile.html', {'user': user, 'user_profile': user_profile})
+    else:
+        messages.error(request, "You need to be logged in to view your profile.")
+        return redirect('login')
 
 def login_page(request):
     return render(request, 'registration/login.html')
